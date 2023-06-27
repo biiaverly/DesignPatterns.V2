@@ -43,5 +43,33 @@ Let's say you are building a Laravel system to process files in different format
 
 :warning::warning::warning:  **YOU DO** :warning::warning::warning:
 
+You have been asked to create a Tax Calculator using the Strategy design pattern. The calculator should be able to calculate different taxes based on the value of a budget. Two specific taxes need to be considered: ISS (Service Tax) and ICMS (Tax on Circulation of Goods and Services).
 
+Here are the specifications for each tax:
 
+ISS:
+    The ISS tax rate is 6% of the budget value.
+
+ICMS:
+    The ICMS tax rate is 10% of the budget value.
+
+You also need to create a class called "Budget" that represents a budget with the quantity of items. This class will be used as input for the tax calculator.
+
+Now, using the Strategy pattern, you should implement the following steps:
+
+    Define the Strategy interface:
+        Create an interface called "Tax" that declares the method for calculating the tax.
+
+    Implement the concrete strategies:
+        Create two classes, one for each tax: "IssTax" and "IcmsTax".
+        Implement the tax calculation logic in each class according to the mentioned specifications.
+
+    Client:
+        Create a class called "TaxCalculator" that takes a "Budget" object and a "Tax" object (the strategy).
+        The "TaxCalculator" class will invoke the tax calculation method on the "Tax" object, passing the "Budget" as a parameter.
+
+    Usage:
+        Create a "Budget" object with the desired value and item quantity.
+        Create "IssTax" and "IcmsTax" objects to represent the tax strategies.
+        Create a "TaxCalculator" object and pass the "Budget" object and the desired tax strategy.
+        Call the tax calculation method on the "TaxCalculator" to obtain the calculated tax value.
