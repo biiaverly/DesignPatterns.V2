@@ -73,3 +73,42 @@ Now, using the Strategy pattern, you should implement the following steps:
         Create "IssTax" and "IcmsTax" objects to represent the tax strategies.
         Create a "TaxCalculator" object and pass the "Budget" object and the desired tax strategy.
         Call the tax calculation method on the "TaxCalculator" to obtain the calculated tax value.
+
+
+## 2.2- Chain of Responsability
+
+The Chain of Responsibility is a behavioral design pattern that allows an object to pass a request along a chain of potential handlers until one of them handles the request. It decouples the sender of the request from its receivers and allows multiple objects to have a chance to process the request.
+
+In this pattern, each handler in the chain has a reference to the next handler in line. When a request is received, the handler can choose to process it or pass it to the next handler in the chain. This creates a flexible and extensible system where the request can travel through the chain until a suitable handler is found.
+
+**Problem**
+
+Let's say you are building a web application where users can perform various actions, such as viewing data, creating new records, updating existing records, and deleting records. Each action requires a different level of authorization. For example, viewing data might require basic user authentication, while deleting records might require admin-level authorization.
+
+Using the Chain of Responsibility pattern, you can create a chain of authorization handlers, where each handler represents a specific level of authorization. The request is passed through the chain until it reaches a handler that can handle the authorization level required for the action.
+
+
+**Solution**
+
+    Define the Handler Interface:
+        Create an interface called "AuthorizationHandler" that declares a method for handling authorization requests.
+
+    Implement the Concrete Handlers:
+        Create concrete classes for each level of authorization, such as "BasicAuthorizationHandler", "AdminAuthorizationHandler", etc.
+        Each handler should implement the "AuthorizationHandler" interface and have a reference to the next handler in the chain.
+
+    Configure the Chain:
+        Define the order and composition of the authorization handlers in the chain.
+        Each handler should have a method to check if it can handle the authorization level required for the request and a method to process the request if authorized.
+
+    Process the Request:
+        When a user performs an action, such as deleting a record, pass the request to the first handler in the chain.
+        The chain will process the request sequentially until a handler capable of handling the required authorization level is found.
+
+
+:warning::warning::warning:  **YOU DO** :warning::warning::warning:
+
+You have been tasked with creating a Discount Calculator using the Chain of Responsibility method. The calculator should be able to calculate discounts based on the quantity of items and the total value of a purchase. Specifically, you need to implement the following discount rules:
+
+    If the quantity of items is greater than 500, apply a 5% discount.
+    If the total value of the purchase is greater than 500 reais, apply a 1% discount.
