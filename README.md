@@ -112,3 +112,38 @@ You have been tasked with creating a Discount Calculator using the Chain of Resp
 
     If the quantity of items is greater than 500, apply a 5% discount.
     If the total value of the purchase is greater than 500 reais, apply a 1% discount.
+
+
+ ## 2.3- Template Method
+
+ The Template Method is a behavioral design pattern that defines the skeleton of an algorithm in a base class but delegates some steps of the algorithm to subclasses. It allows subclasses to provide their own implementation for specific steps while keeping the overall structure of the algorithm intact.
+
+The Template Method pattern is useful when you have an algorithm that has a general structure, but certain steps may vary depending on the specific implementation. By encapsulating the shared structure in a base class and defining abstract or hook methods that can be overridden in subclasses, you can provide a template for the algorithm's behavior while allowing flexibility for customization.
+
+**Problem**
+ne problem that can be effectively solved using the Template Method pattern is the implementation of different algorithms or processes that share a common structure but have varying steps or behaviors.
+
+Let's consider the example of a data export system. The system needs to export data from different data sources, such as a database, a CSV file, or an API. Each data source requires a specific set of steps to be followed during the export process, but the overall structure of the export algorithm remains the same.
+
+**Soluton**
+Using the Template Method pattern, you can create a base class that defines the common structure of the export algorithm, while allowing subclasses to provide their own implementation for specific steps. Here's how it can be implemented:
+
+    Define a base class called "DataExporter" that contains the template method and abstract methods for the specific steps of the export process.
+
+    Implement concrete classes that inherit from "DataExporter" for each data source, such as "DatabaseExporter," "CSVExporter," and "APIExporter."
+
+    In the base class, implement the template method that outlines the overall structure of the export process. This method calls the abstract methods for the specific steps.
+
+    Subclasses override the abstract methods to provide their own implementation of the specific steps required for exporting data from their respective sources. For example, the "DatabaseExporter" subclass would implement methods to connect to the database, retrieve the data, and save it to a file.
+
+
+
+:warning::warning::warning:  **YOU DO** :warning::warning::warning:
+
+Create an abstract class called "Taxed2Aliquotadas" that determines whether to apply the maximum or minimum tax rate based on the budget. Additionally, create two different tax classes that extend this abstract class and implement the respective methods for each tax.
+
+In this scenario, we have an abstract class called "Taxed2Aliquotadas" that serves as a template for determining the tax rate to be applied. This class will have two methods, "applyMaxTaxRate" and "applyMinTaxRate," which will be implemented by its subclasses.
+
+The two subclasses, let's call them "TaxA" and "TaxB," will provide their own specific implementations of the tax calculation methods based on their unique tax rules.
+
+By using this design, you can create multiple tax classes that inherit from the "Taxed2Aliquotadas" abstract class. Each subclass will implement the appropriate methods for calculating taxes according to their specific rules. This approach ensures code reuse, allows for easy addition of new tax classes, and promotes a clear separation of concerns between the abstract tax determination logic and the implementation details of each tax subclass.
