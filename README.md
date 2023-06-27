@@ -147,3 +147,32 @@ In this scenario, we have an abstract class called "Taxed2Aliquotadas" that serv
 The two subclasses, let's call them "TaxA" and "TaxB," will provide their own specific implementations of the tax calculation methods based on their unique tax rules.
 
 By using this design, you can create multiple tax classes that inherit from the "Taxed2Aliquotadas" abstract class. Each subclass will implement the appropriate methods for calculating taxes according to their specific rules. This approach ensures code reuse, allows for easy addition of new tax classes, and promotes a clear separation of concerns between the abstract tax determination logic and the implementation details of each tax subclass.
+
+ ## 2.4- State
+
+The State design pattern is a behavioral design pattern that allows an object to alter its behavior when its internal state changes. It enables an object to appear as if it has changed its class, as its behavior can vary based on its internal state.
+
+In the State pattern, the behavior of an object is encapsulated in separate state objects that implement a common interface. These state objects represent different states of the object, and they handle the object's behavior based on their specific state. The object maintains a reference to the current state object and delegates the behavior to that state object.
+
+
+**Problem**
+Let's consider an example where you have an Order entity in an e-commerce application, and the order can be in different states such as "Pending", "Processing", "Shipped", and "Delivered". Each state has its own set of actions and behavior associated with it.
+
+
+**Solution**
+
+
+    Define a State interface: Create an interface, let's call it "OrderState", that declares methods representing the actions or behaviors associated with each state, such as "confirmOrder," "processPayment," "shipOrder," and so on.
+
+    Implement Concrete State classes: Create concrete classes that implement the "OrderState" interface, representing each state of the order, such as "PendingState," "ProcessingState," "ShippedState," and "DeliveredState". Each class will provide its own implementation of the methods declared in the interface.
+
+    Implement the Context class: Create a class called "Order" that represents the context or entity, such as an Order object in our example. The Order class should maintain a reference to the current state object and delegate method calls to that state object.
+
+    Define state transitions: In the Order class, define methods for transitioning between states. For example, you could have methods like "transitionToProcessingState," "transitionToShippedState," etc. These methods will update the current state object reference based on the state transition rules.
+
+    Use the State pattern in Laravel: In your Laravel application, you can utilize the State pattern by implementing the State interface and the concrete state classes within your Order entity. This allows you to encapsulate the behavior associated with each state and manage the state transitions within the Order entity.
+
+:warning::warning::warning:  **YOU DO** :warning::warning::warning:
+
+
+Implement a state-based discount system for a budget management application in Laravel. The budget can be in one of four states: "aprovacao" (approval), "aprovado" (approved), "reprovado" (disapproved), or "finalizado" (finalized). Each state allows for a specific discount to be applied.
