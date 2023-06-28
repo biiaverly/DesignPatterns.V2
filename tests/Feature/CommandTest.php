@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Artisan;
 
 class CommandTest extends TestCase
 {
-    /** @test */
     public function test_Gerar_Pedido()
     {
         $nomeCliente = 'Exemplo Cliente';
