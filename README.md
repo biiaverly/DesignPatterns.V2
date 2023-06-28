@@ -205,3 +205,29 @@ In such an application, you may have various menu items or buttons that trigger 
 Develop a system that utilizes the Command pattern to generate customized orders. Each order should be created based on the customer's name, item value, and quantity provided as input to the Command. The system should encapsulate this information in a Command object, which will be responsible for creating the order based on the given parameters.
 
 
+ ## 2.6- Observer
+
+The Observer pattern, also known as the "Publish-Subscribe" pattern, is a behavioral design pattern that establishes a one-to-many dependency between objects. In this pattern, when one object (subject) changes its state, all its dependent objects (observers) are notified and updated automatically.
+
+The Observer pattern is useful in situations where there is a dependency relationship between objects, and one object needs to be informed when another object changes its state. Instead of observers constantly checking the state of the subject object, they register themselves as observers and wait to be notified of any relevant changes.
+
+
+**Problem**
+When there is a need to notify multiple objects or components about an event or state change in another object, the Observer pattern provides an efficient solution. It allows observers to subscribe to subjects and receive notifications when relevant changes occur.
+
+**Solution**
+
+    Define your events: In Laravel, events are represented by classes. Create an event class for the specific event you want to observe. For example, you can create a OrderPlaced event class that represents an order being placed.
+
+    Define your listeners (observers): Listeners are classes that respond to specific events. Create a listener class for each event you want to observe. For example, you can create an EmailNotificationListener that sends an email notification when an order is placed.
+
+    Register your listeners: In Laravel, you need to register your listeners in the EventServiceProvider class. Open the EventServiceProvider located in the app/Providers directory and add your listeners to the listen array. Map the event class to its corresponding listener(s).
+
+    Dispatch the event: Whenever the event occurs (e.g., an order is placed), dispatch the event using Laravel's event dispatcher. You can dispatch an event by calling event(new YourEventClass()) or using the Event facade.
+
+    Handle the event in the listener: The listener class should define a handle() method that receives the event as an argument. Implement the logic in the handle() method to respond to the event. In our example, the EmailNotificationListener would send an email when the OrderPlaced event is triggered.
+
+
+:warning::warning::warning:  **YOU DO** :warning::warning::warning:
+Using the Observer design pattern, describe the following actions without fully implementing them: create an order in the database, send an order via email, and generate a log for the order.
+
