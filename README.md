@@ -176,3 +176,32 @@ Let's consider an example where you have an Order entity in an e-commerce applic
 
 
 Implement a state-based discount system for a budget management application in Laravel. The budget can be in one of four states: "aprovacao" (approval), "aprovado" (approved), "reprovado" (disapproved), or "finalizado" (finalized). Each state allows for a specific discount to be applied.
+
+
+ ## 2.5- Command
+"Command" refers to a behavioral pattern that aims to encapsulate a request as an object, allowing you to parameterize clients with different requests, queue or log requests, and support undo operations.
+
+The Command pattern is based on the principle that all requests are encapsulated as objects, known as commands. These commands have a common interface that defines a method, for example, execute(), which is invoked to perform the action associated with the command.
+
+**Problem**
+One problem that can be effectively addressed with the Command design pattern is the implementation of a menu or toolbar system in a graphical user interface (GUI) application.
+
+In such an application, you may have various menu items or buttons that trigger different actions when clicked. Instead of directly coupling the UI components with the specific actions they perform, the Command pattern can be employed to decouple the invoker (UI component) from the receiver (action execution).
+
+**Solution**
+
+    Define the Command interface: Create an interface that declares the common methods for executing the command, such as execute().
+
+    Implement concrete Command classes: Create concrete classes that implement the Command interface for each specific action you want to associate with a UI component. Each concrete command should encapsulate the necessary logic to execute the corresponding action.
+
+    Create invoker objects: Implement the UI components (e.g., menu items, buttons) that will invoke the commands. These invoker objects should have a reference to a Command object and call its execute() method when triggered.
+
+    Set up the associations: Associate the appropriate Command objects with the corresponding UI components. This can be done during the initialization of the application or dynamically at runtime.
+
+    Handle user interaction: When a UI component is interacted with (e.g., clicked), the associated Command object's execute() method should be invoked by the invoker.
+
+:warning::warning::warning:  **YOU DO** :warning::warning::warning:
+
+Develop a system that utilizes the Command pattern to generate customized orders. Each order should be created based on the customer's name, item value, and quantity provided as input to the Command. The system should encapsulate this information in a Command object, which will be responsible for creating the order based on the given parameters.
+
+
