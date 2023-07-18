@@ -144,9 +144,47 @@ The objective of this example is to demonstrate the implementation of the Bridge
 
 
 ![Alt text](resources/img/Bridge.jpg?raw=true "Title")
-## 2.3- Adapter
 
-## 2.4- Composite
 
-## 2.5- Decorator
+# 2.3- Decorator
+## Description
+The Decorator pattern is a structural design pattern that allows you to dynamically add or extend functionalities to individual objects at runtime without modifying their structure. It provides an alternative to subclassing for extending object behavior.
 
+## Problem
+In software development, there are scenarios where we want to add new functionalities or alter the behavior of objects without changing their underlying code. The traditional approach of achieving this is through inheritance, which can lead to a complex class hierarchy and code duplication when dealing with multiple combinations of functionalities.
+
+## Solution
+The Decorator pattern addresses these issues by introducing a set of decorator classes that wrap around the original object. These decorators implement the same interface as the original object, allowing them to be used interchangeably. Each decorator adds specific functionality to the object, and the decorators can be stacked together in a flexible manner.
+
+## Classes and Interfaces
+
+1. `Component` - Interface or abstract class representing the core functionality of the object.
+2. `ConcreteComponent` - Class implementing the `Component` interface, providing the base functionality of the object.
+3. `Decorator` - Abstract class implementing the `Component` interface and holding a reference to a `Component` object. It serves as a base for all concrete decorators.
+4. `ConcreteDecoratorA`, `ConcreteDecoratorB`, etc. - Classes extending `Decorator` to provide specific functionalities to the original object.
+
+## Steps
+
+1. Define an interface or abstract class `Component` representing the core functionality of the object.
+2. Implement the `ConcreteComponent` class, which implements the `Component` interface and provides the base functionality of the object.
+3. Create the `Decorator` abstract class implementing the `Component` interface. It holds a reference to a `Component` and serves as a base for concrete decorators.
+4. Implement concrete decorator classes (`ConcreteDecoratorA`, `ConcreteDecoratorB`, etc.) by extending the `Decorator`. These classes add extra functionality to the original object.
+5. The concrete decorators use composition to wrap around the original component and modify or extend its behavior.
+6. Clients can create and use decorators dynamically, combining different decorators as needed to achieve desired features.
+
+# :warning:  **YOU DO**
+##  Calculating Taxes for Orders
+## Problem
+
+In software development, calculating taxes for orders can become complex when dealing with different tax rates and combinations of taxes. Traditional approaches, like using inheritance, can lead to a rigid class hierarchy and code duplication.
+
+## Solution
+
+The Decorator pattern provides a flexible solution to the tax calculation problem. It introduces a set of decorator classes that wrap around the original order object. Each decorator handles a specific tax calculation and can be combined to create various tax calculation strategies.
+
+## Code Implementation
+
+1. `ImpostoInterface`: This is the base interface representing the core functionality for calculating taxes.
+2. `Iss`, `Icms`, `Icpp`, and `Ikcv`: These are Components representing different types of taxes, implementing the `ImpostoInterface`.
+3. `Imposto2Aliquotas`: This is the Decorator abstract class, implementing `ImpostoInterface`. It provides the logic to calculate taxes based on two different tax rates.
+4. `CalculaImpostoService`: This class uses the Decorator pattern to calculate the final tax amount for an order.
