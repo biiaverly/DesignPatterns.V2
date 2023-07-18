@@ -7,9 +7,10 @@ namespace App\Services\Imposto;
 use App\Interfaces\ImpostoInterface;
 use App\Services\Orcamento\Orcamento;
 
-class Icms implements ImpostoInterface
+class Icms extends ImpostoInterface
 {
-    public function calculaImposto(Orcamento $orcamento): float
+    //ConcreteComponent
+    public function realizaCalculoEspecifico(Orcamento $orcamento): float
     {
         return $orcamento->valor * 0.1;
     }
