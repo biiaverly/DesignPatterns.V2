@@ -8,7 +8,7 @@ use App\Services\Imposto\Imposto2Aliquotas;
 
 class Ikcv extends Imposto2Aliquotas
 {
-
+    ///ConcreteDecoratorA
     protected function deveAplicarTaxaMaxima(Orcamento  $orcamento): bool
     {
         return $orcamento->valor > 300 && $orcamento->quantidadeItens > 3;
