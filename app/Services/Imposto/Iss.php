@@ -7,9 +7,10 @@ namespace App\Services\Imposto;
 use App\Interfaces\ImpostoInterface;
 use App\Services\Orcamento\Orcamento;
 
-class Iss implements ImpostoInterface
+class Iss extends ImpostoInterface
 {
-    public function calculaImposto(Orcamento $orcamento): float
+    ///ConcreteComponent
+    public function realizaCalculoEspecifico(Orcamento $orcamento): float
     {
         return $orcamento->valor * 0.06;
     }
