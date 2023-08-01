@@ -250,3 +250,28 @@ You have been assigned to develop a system that allows budget modeling. The syst
 
 Use the Composite pattern to ensure that all items and budgets are treated uniformly through the `Orcavel` interface. This will allow the system to work flexibly with complex budget structures, where budgets may contain other budgets forming a tree hierarchy.
 
+# Facade Pattern
+
+The Facade pattern is a structural design pattern that provides a simplified interface to a set of complex classes or subsystems. It acts as an abstraction layer to hide the internal complexity and make it easier for clients to interact with the system.
+
+### Problem
+
+When a system or a set of classes becomes complex and has many interdependent components, clients may find it difficult to interact with it directly. The client needs to understand the internal structure and dependencies of each component, which can lead to increased coupling and difficulty in using the system effectively.
+
+### Solution
+
+The Facade pattern provides a high-level interface that encapsulates the complexity of the subsystems. By creating a Facade class, clients can interact with the system through a simplified API without having to know the intricacies of individual components.
+
+### Structure
+
+The Facade pattern consists of the following components:
+
+- **Facade**: Provides a simple and unified interface to the client. It knows which subsystem classes are responsible for specific operations and delegates the calls accordingly.
+
+- **Subsystem Classes**: The complex classes or subsystems that perform the actual functionality. They are not aware of the Facade and can operate independently.
+
+### Benefits
+
+- Simplifies client usage by providing a straightforward interface to the system.
+- Reduces client code complexity and coupling with subsystems.
+- Allows for easier maintenance and future modifications as changes are limited to the Facade.
