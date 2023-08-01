@@ -188,3 +188,65 @@ The Decorator pattern provides a flexible solution to the tax calculation proble
 2. `Iss`, `Icms`, `Icpp`, and `Ikcv`: These are Components representing different types of taxes, implementing the `ImpostoInterface`.
 3. `Imposto2Aliquotas`: This is the Decorator abstract class, implementing `ImpostoInterface`. It provides the logic to calculate taxes based on two different tax rates.
 4. `CalculaImpostoService`: This class uses the Decorator pattern to calculate the final tax amount for an order.
+
+
+# Composite Design Pattern
+
+The Composite design pattern is a structural design pattern that allows you to treat individual objects and compositions of objects uniformly. It combines objects into tree-like structures to represent part-whole hierarchies. This enables clients to handle both individual objects and compositions of objects uniformly.
+
+## Key Components
+
+1. **Component**: It's the common interface for all elements in the structure. It defines operations that are common for both individual objects and composites.
+
+2. **Leaf**: It's the implementation of the component interface for individual objects. They do not have children.
+
+3. **Composite**: It's the implementation of the component interface for objects that contain other objects (components). A composite holds a list of child components and also implements the operations defined in the component interface.
+
+4. **Client**: It interacts with the objects through the component interface. It treats all objects, whether leaf or composite, uniformly.
+
+## Advantages of the Composite Pattern
+
+- Simplifies client code as it can treat individual objects and composites uniformly.
+- Facilitates adding new types of objects to the hierarchical structure.
+- Promotes flexibility and code extensibility.
+- Helps maintain consistency between objects and object compositions.
+
+## Practical Example
+# Problem
+
+Using the Composite pattern makes sense only when the core model of your app can be represented as a tree.
+
+For example, imagine that you have two types of objects: Products and Boxes. A Box can contain several Products as well as a number of smaller Boxes. These little Boxes can also hold some Products or even smaller Boxes, and so on.
+
+Say you decide to create an ordering system that uses these classes. Orders could contain simple products without any wrapping, as well as boxes stuffed with products...and other boxes. How would you determine the total price of such an order?
+
+## Structure of a complex order
+
+An order might comprise various products, packaged in boxes, which are packaged in bigger boxes and so on. The whole structure looks like an upside down tree.
+
+You could try the direct approach: unwrap all the boxes, go over all the products and then calculate the total. That would be doable in the real world; but in a program, it’s not as simple as running a loop. You have to know the classes of Products and Boxes you’re going through, the nesting level of the boxes and other nasty details beforehand. All of this makes the direct approach either too awkward or even impossible.
+
+## Solution
+
+The Composite pattern suggests that you work with Products and Boxes through a common interface which declares a method for calculating the total price.
+
+How would this method work? For a product, it’d simply return the product’s price. For a box, it’d go over each item the box contains, ask its price and then return a total for this box. If one of these items were a smaller box, that box would also start going over its contents and so on, until the prices of all inner components were calculated. A box could even add some extra cost to the final price, such as packaging cost.
+
+# :warning:  **YOU DO**
+## Implementation of the Composite Pattern for Budget Modeling
+
+You have been assigned to develop a system that allows budget modeling. The system needs to support the creation of composite budgets, meaning budgets that can contain both individual items and other budgets. Each budget can have a specific state, such as approved, rejected, or finalized.
+
+### Requirements
+
+1. Create an interface called `Orcavel`, which declares the `valor()` method. This interface will be used as the component of the Composite pattern.
+
+2. The class `ItemOrcamento` represents an individual budget item. It should implement the `Orcavel` interface and have an attribute to store the item's value.
+
+3. The class `Orcamento` represents a composite budget, which can contain a collection of individual items (`ItemOrcamento`) or other budgets (`Orcamento`). The class `Orcamento` should implement the `Orcavel` interface. Additionally, it should have methods to add items (`addItens`) and calculate the total value of the budget (`valor()`).
+
+4. Budgets also have states that can be modified through methods like `approve()`, `reject()`, and `finalize()`. Each state may affect the calculation of the budget's total value.
+
+
+Use the Composite pattern to ensure that all items and budgets are treated uniformly through the `Orcavel` interface. This will allow the system to work flexibly with complex budget structures, where budgets may contain other budgets forming a tree hierarchy.
+
